@@ -1,33 +1,23 @@
-<?php   
-    
-    //Este es el archivo donde salta el formulario.
-    $a = $_GET[ 'v1' ]; 
-    $b = $_GET[ 'v2' ]; 
-    $c = $_GET[ 'v3' ]; 
-    $d = $_GET[ 'v4' ]; 
-    $e = $_GET[ 'v5' ]; 
-    $f = $_GET[ 'v6' ]; 
-    $g = $_GET[ 'v7' ]; 
-    $h = $_GET[ 'v8' ]; 
+<?php
 
-    //for( $i = 1; $i <= 8; $i ++ )
-    //echo $_GET[ 'v'.$i ];
+    $a = $_POST[ 'v1' ];
+    //$b = $_POST[ 'v2' ];
+    //$c = $_POST[ 'v3' ];
+    $d = $_POST[ 'v4' ];
 
-    //Esta línea es para la conexión de bases de datos. Ojo con la base de datos.
-    $conexion = mysqli_connect( "localhost", "root", "", "bd_david_sanchez" );
+    //echo $a.$b.$c.$d;
 
-    //Esta línea es para armar un sql que se va a ejecutar.
-    $sql = " INSERT INTO prestamo_ambientes( fecha_registro, hora_ingreso, hora_salida, observaciones, no, id, fecha_prestamo, fecha_devolucion ) ";
-    $sql .= " VALUES( '$a', '$b', '$c', '$d', '$e', '$f', '$g', '$h' ) "; 
-    
-     //Ejecutamos el sql.
-     $resultado = $conexion->query( $sql );
+    $conexion = mysqli_connect( "localhost", "root", "", "bd_traductor_adsi" );
+    $sql = " INSERT INTO tb_traduccion ( id, palabra_1, palabra_2, id_palabra ) ";
+    $sql .= " VALUES( NULL, '$a', '$d', '$d' ) ";
+    //echo $sql;
+    $resultado = $conexion->query( $sql );
 
-     //Esta línea verifica si la inserción funciono.
-     if( mysqli_affected_rows( $conexion ) > 0 )
-     {
-         echo "Se escrbieron tus datos";
- 
-     }else{
-             echo "No se escrbieron tus datos";
-         }
+    //Esta línea verifica si la inserción funciono.
+    if( mysqli_affected_rows( $conexion ) > 0 )
+    {
+        echo "Se escrbieron tus datos";
+
+    }else{
+            echo "No se escrbieron tus datos";
+        }
